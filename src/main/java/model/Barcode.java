@@ -48,9 +48,9 @@ public class Barcode {
         cell1.setRotation(90);
         Phrase phrase = new Phrase(place);
         phrase.setFont(new Font(Font.FontFamily.HELVETICA,
-                50, Font.BOLD));
+                55, Font.BOLD));
         Phrase phrase2 = new Phrase("\n место");
-        phrase2.setFont(new Font(getFont(),15));
+        phrase2.setFont(new Font(getFont(),17));
         cell1.addElement(phrase);
         cell1.addElement(phrase2);
         cell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
@@ -67,12 +67,12 @@ public class Barcode {
         cell.setRotation(90);
         Phrase phrase = new Phrase(ryad);
         phrase.setFont(new Font(Font.FontFamily.HELVETICA,
-                30, Font.BOLD));
+                35, Font.BOLD));
         Phrase phrase1 = new Phrase(" ряд");
-        phrase1.setFont(new Font(getFont(),30));
+        phrase1.setFont(new Font(getFont(),27));
         Phrase phrase2 = new Phrase(loc);
         phrase2.setFont(new Font(Font.FontFamily.HELVETICA,
-                50, Font.BOLD));
+                55, Font.BOLD));
         cell.addElement(phrase);
         cell.addElement(phrase1);
         cell.addElement(phrase2);
@@ -122,16 +122,16 @@ public class Barcode {
             code128.setCode(codeLocWithout[index]);
             code128.setCodeType(Barcode128.CODE128);
             Image code128Image = code128.createImageWithBarcode(cb, null, null);
-            code128Image.scaleAbsolute(170,10);
+            code128Image.scaleAbsolute(175,10);
             cellBar.addElement(code128Image);
             table.addCell(cellBar).setBorder(0);
             PdfPCell cellEtage = new PdfPCell();
             cellEtage.setRotation(90);
             cellEtage.setVerticalAlignment(Element.ALIGN_CENTER);
-            String numEtage = "   " + etage[index];
+            String numEtage = "  " + etage[index];
             Phrase numEtagePhrase = new Phrase(numEtage);
             numEtagePhrase.setFont(new Font(Font.FontFamily.HELVETICA,
-                    28, Font.BOLD));
+                    25));
             cellEtage.addElement(numEtagePhrase);
             cellEtage.setHorizontalAlignment(Element.ALIGN_LEFT);
             table.addCell(cellEtage).setBorder(0);
@@ -141,7 +141,7 @@ public class Barcode {
         PdfPCell cellLoc = new PdfPCell();
         cellLoc.setRotation(90);
         Phrase phrase3 = new Phrase(" ячейка");
-        phrase3.setFont(new Font(getFont(),20));
+        phrase3.setFont(new Font(getFont(),20, Font.BOLD));
         cellLoc.addElement(phrase3);
         table.addCell(cellLoc).setBorder(0);
         table.addCell(empty).setBorder(0);
@@ -179,7 +179,7 @@ public class Barcode {
                 code128.setCode(codeLocWithout[index]);
                 code128.setCodeType(Barcode128.CODE128);
                 Image code128Image = code128.createImageWithBarcode(cb, null, null);
-                code128Image.scaleAbsolute(170, 10);
+                code128Image.scaleAbsolute(175, 10);
                 cellBar.addElement(code128Image);
                 table.addCell(cellBar).setBorder(0);
                 PdfPCell cellEtage = new PdfPCell();
@@ -187,7 +187,7 @@ public class Barcode {
                 String numEtage = "  " + etage[index];
                 Phrase numEtagePhrase = new Phrase(numEtage);
                 numEtagePhrase.setFont(new Font(Font.FontFamily.HELVETICA,
-                        24, Font.BOLD));
+                        25));
                 cellEtage.addElement(numEtagePhrase);
                 table.addCell(cellEtage).setBorder(0);
                 table.addCell(empty).setBorder(0);
@@ -196,7 +196,7 @@ public class Barcode {
             PdfPCell cellLoc = new PdfPCell();
             cellLoc.setRotation(90);
             Phrase phrase3 = new Phrase(" ячейка");
-            phrase3.setFont(new Font(getFont(), 20));
+            phrase3.setFont(new Font(getFont(), 20, Font.BOLD));
             cellLoc.addElement(phrase3);
             table.addCell(cellLoc).setBorder(0);
             table.addCell(empty).setBorder(0);
