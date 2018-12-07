@@ -19,6 +19,12 @@
             <artifactId>itextpdf</artifactId>
             <version>5.5.13</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.zenjava/javafx-maven-plugin -->
+        <dependency>
+            <groupId>com.zenjava</groupId>
+            <artifactId>javafx-maven-plugin</artifactId>
+            <version>8.8.3</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -26,9 +32,9 @@
             <plugin>
                 <groupId>com.zenjava</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
-                <version>2.0</version>
+                <version>8.8.2</version>
                 <configuration>
-                    <mainClass>com.devcolibri.mavenjavafxapp.MainApp</mainClass>
+                    <mainClass>MainApp</mainClass>
                 </configuration>
             </plugin>
             <plugin>

@@ -160,34 +160,49 @@ public class Barcode {
         Document document = new Document();
         PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(dest));
         document.open();
-
         PdfContentByte cb = writer.getDirectContent();
-
-        PdfPTable table = new PdfPTable(1);
-
         for (String code : list) {
-            Barcode128 code128 = new Barcode128();
-
-            Image code128Image = code128.createImageWithBarcode(cb, null, null);
-            PdfPCell cell = new PdfPCell(code128Image);
-            code128 = new Barcode128();
-            code128.setFont(null);
-            code128.setCode(code);
-            code128.setCodeType(Barcode128.CODE128);
-            code128Image = code128.createImageWithBarcode(cb, null, null);
-            cell = new PdfPCell();
-            cell.addElement(new Phrase("PO #: " + code));
-            cell.addElement(code128Image);
-            cell.addElement(new Phrase(code + "Roslogistics"));
-            table.addCell(cell);
+            getStrings(code);
+            PdfPTable table = new PdfPTable(3);
+            table.setWidths(new int[]{45, 10, 45});
+            table.addCell(getPlaceCell(place)).setBorder(0);
+            PdfPCell empty = new PdfPCell();
+            table.addCell(empty).setBorder(0);
+            table.addCell(empty).setBorder(0);
+            for (int index = 0; index != etage.length; index++) {
+                PdfPCell cellBar = new PdfPCell();
+                cellBar.setPadding(3);
+                Phrase numberPhrase = new Phrase(codeLocWith[index]);
+                cellBar.addElement(numberPhrase);
+                Barcode128 code128 = new Barcode128();
+                code128.setFont(null);
+                code128.setCode(codeLocWithout[index]);
+                code128.setCodeType(Barcode128.CODE128);
+                Image code128Image = code128.createImageWithBarcode(cb, null, null);
+                code128Image.scaleAbsolute(170, 10);
+                cellBar.addElement(code128Image);
+                table.addCell(cellBar).setBorder(0);
+                PdfPCell cellEtage = new PdfPCell();
+                cellEtage.setRotation(90);
+                String numEtage = "  " + etage[index];
+                Phrase numEtagePhrase = new Phrase(numEtage);
+                numEtagePhrase.setFont(new Font(Font.FontFamily.HELVETICA,
+                        24, Font.BOLD));
+                cellEtage.addElement(numEtagePhrase);
+                table.addCell(cellEtage).setBorder(0);
+                table.addCell(empty).setBorder(0);
+            }
+            table.addCell(getRyadCell()).setBorder(0);
+            PdfPCell cellLoc = new PdfPCell();
+            cellLoc.setRotation(90);
+            Phrase phrase3 = new Phrase(" ячейка");
+            phrase3.setFont(new Font(getFont(), 20));
+            cellLoc.addElement(phrase3);
+            table.addCell(cellLoc).setBorder(0);
+            table.addCell(empty).setBorder(0);
+            document.add(table);
+            document.newPage();
         }
-
-        document.add(table);
         document.close();
     }
-
-    public void prepare() {
-
-    }
-
 }
