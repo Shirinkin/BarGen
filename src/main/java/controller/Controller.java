@@ -46,7 +46,7 @@ public class Controller {
     @FXML
     Button generateAll = new Button();
 
-
+/*
     public void initialize() {
         File file = new File("C:/xls/file.txt");
         textFieldFile.setText(file.toString());
@@ -57,7 +57,7 @@ public class Controller {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Невозможно открыть файл!");
         }
-    }
+    }*/
 
 
     /**

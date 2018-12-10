@@ -9,5 +9,8 @@
         <module name="BarGen" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="BarGen" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
